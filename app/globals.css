@@ -1,0 +1,187 @@
+@import "tailwindcss";
+:root {
+  --navy-950: #040d1a;
+  --navy-900: #0a1628;
+  --navy-800: #0f2042;
+  --navy-700: #162d5c;
+  --navy-600: #1e3a70;
+  --accent-green: #00d084;
+  --accent-green-dark: #00a866;
+  --accent-blue: #3b82f6;
+  --card-bg: #ffffff;
+  --border: #e5e7eb;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+}
+
+.dark {
+  --card-bg: #0f1f3d;
+  --border: #1e3a70;
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--navy-950);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--navy-900);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--navy-600);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-green);
+}
+
+/* Number input hide arrows */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,208,132,0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(0,208,132,0); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease both;
+}
+.animate-pulse-green {
+  animation: pulse-green 2s infinite;
+}
+
+/* Glass morphism card */
+.glass-card {
+  background: rgba(15, 32, 66, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(30, 58, 112, 0.5);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #00d084, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Result highlight */
+.result-value {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* Table striping */
+.amort-row:nth-child(even) {
+  background: rgba(255,255,255,0.02);
+}
+.amort-row:hover {
+  background: rgba(0, 208, 132, 0.05);
+}
+
+/* Ad slot styling */
+.ad-slot {
+  min-height: 90px;
+  border: 1px dashed rgba(30, 58, 112, 0.4);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(107, 114, 128, 0.5);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Range slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: rgba(30, 58, 112, 0.6);
+  border-radius: 2px;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  cursor: pointer;
+  box-shadow: 0 0 0 3px rgba(0,208,132,0.2);
+  transition: box-shadow 0.2s;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 0 6px rgba(0,208,132,0.2);
+}
+
+/* Focus ring */
+.focus-ring:focus-visible {
+  outline: 2px solid var(--accent-green);
+  outline-offset: 2px;
+}
+
+/* Tooltip */
+.tooltip {
+  position: relative;
+}
+.tooltip .tooltip-text {
+  visibility: hidden;
+  opacity: 0;
+  background: #0a1628;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 6px;
+  padding: 6px 10px;
+  position: absolute;
+  z-index: 10;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  text-align: center;
+  border: 1px solid rgba(30,58,112,0.8);
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
